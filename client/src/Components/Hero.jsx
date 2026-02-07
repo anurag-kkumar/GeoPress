@@ -5,7 +5,7 @@ function Hero() {
     <div className="text-white pt-20 pb-24 md:pt-72 md:pb-52">
       
       {/* HERO TEXT */}
-      <div className="max-w-[1000px] px-4 m-auto text-center">
+      <div className="max-w-250 px-4 m-auto text-center">
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold uppercase leading-tight">
           Empowering Safety with WITH
         </h1>
@@ -18,7 +18,7 @@ function Hero() {
       </div>
 
       {/* ANIMATED LINE */}
-      <div className="w-1 h-[70px] md:h-[90px] mt-20 m-auto mb-6">
+      <div className="w-1 h-17.5 md:h-22.5 mt-20 m-auto mb-6">
         <motion.div
           initial={{ height: 0 }}
           animate={{ height: [0, 100, 0] }}
@@ -50,7 +50,7 @@ function Hero() {
             <img
               src="https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202025-11-08%20132122.png?updatedAt=1762588414408"
               alt=""
-              className="w-[50px] md:w-[55px]"
+              className="w-12.5 md:w-13.75"
             />
             <p className="text-center text-sm md:text-base">Dainik Bhaskar</p>
           </div>
@@ -60,7 +60,7 @@ function Hero() {
             <img
               src="https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202025-11-08%20132054.png?updatedAt=1762588414132"
               alt=""
-              className="w-[65px] md:w-[75px]"
+              className="w-16.25 md:w-18.75"
             />
             <p className="text-center text-sm md:text-base">TOI</p>
           </div>
@@ -70,7 +70,7 @@ function Hero() {
             <img
               src="https://i0.wp.com/hindupost.in/wp-content/uploads/2023/02/bbc-logo-red-0.jpeg?resize=696%2C464&ssl=1"
               alt=""
-              className="w-[65px] md:w-[75px] rounded"
+              className="w-16.25 md:w-18.75 rounded"
             />
           </div>
         </div>

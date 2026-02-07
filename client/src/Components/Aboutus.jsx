@@ -1,6 +1,6 @@
 function Aboutus() {
   return (
-    <div className="pb-20 bg-[url(https://cdn.prod.website-files.com/6584ee98993ef2a2ba17f296/65850001dcdc7fa1686a8490_Noise_Black.webp)] w-full h-full bg-cover bg-center">
+    <div className="pb-20 bg-black w-full h-full ">
       
       {/* ABOUT SECTION */}
       <div className="text-white flex flex-wrap justify-center md:justify-around gap-10 pt-40 px-4">
@@ -28,7 +28,7 @@ function Aboutus() {
           <div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               Get to Know{" "}
-              <span className="text-[#D4F600]">GeoPress Tech</span>
+              <span className="text-red-300">GeoPress Tech</span>
             </h1>
 
             <img

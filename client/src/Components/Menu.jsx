@@ -2,21 +2,26 @@ import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 const Menu = ({ setismenuopen }) => {
   const navigate=useNavigate();
+  let smalltext = "max-md:text-5xl";
+  let largetext = "text-8xl";
+  
+
+
+
+
   return (
 
     <div  className="w-full h-full bg-black bg-opacity-90 flex flex-col items-center justify-center text-white"
     //   onClick={() => setismenuopen(false)} // optional: close when clicked
     >       
       <h1 className="text-3xl mb-6">Menu</h1>
-      <div>
-            {/* item 1 */}
+      <div className="max-md:w-11/12 ">
+            {/* home */}
             <div className="group flex flex-row  justify-between  ">
                 {/* div1  */}
-            <div className="flex flex-row gap-6 transition-transform duration-300 group-hover:translate-x-9 group-hover:scale-104">
-                <p className="flex items-end  justify-center  text-2xl pb-3">1</p>
-            <p className="text-8xl  text-gray-500 font-bold group-hover:text-white
-            
-            " onClick={() => navigate("/home")}
+            <div className="flex flex-row gap-6 transition-transform duration-300 p-5 group-hover:translate-x-9 group-hover:scale-104">
+            <p className={`${largetext} ${smalltext} mx-md: text-gray-500 font-bold group-hover:text-white`}
+            onClick={() => navigate("/home")}
             > HOME</p>
             </div>
             {/* div2 */}
@@ -34,14 +39,15 @@ const Menu = ({ setismenuopen }) => {
            </div>
            
             </div>
+{/* news  */}
+
             <div className="w-[80vw] h-0.5 bg-gray-100 mx-auto"></div>
 
             {/* item 1 */}
             <div className="group flex flex-row justify-between  ">
                 {/* div1  */}
-            <div className="flex flex-row gap-6 transition-transform duration-300 group-hover:translate-x-9 group-hover:scale-104">
-                <p className="flex items-end  justify-center  text-2xl pb-3">2</p>
-            <p className="text-8xl  text-gray-500 font-bold group-hover:text-white"
+            <div className="flex flex-row gap-6 transition-transform duration-300 p-5 group-hover:translate-x-9 group-hover:scale-104">
+            <p className={`${largetext} ${smalltext} mx-md: text-gray-500 font-bold group-hover:text-white`}
            onClick={() => navigate("/newsapp")}
             > NEWS</p>
             </div>
@@ -66,9 +72,8 @@ const Menu = ({ setismenuopen }) => {
             {/* item 1 */}
             <div className="group flex flex-row  justify-between ">
                 {/* div1  */}
-            <div className="flex flex-row gap-6 transition-transform duration-300 group-hover:translate-x-9 group-hover:scale-104">
-                <p className="flex items-end  justify-center  text-2xl pb-3">3</p>
-            <p className="text-8xl  text-gray-500 font-bold group-hover:text-white"
+            <div className="flex flex-row gap-6 transition-transform duration-300 p-5 group-hover:translate-x-9 group-hover:scale-104">
+            <p className={`${largetext} ${smalltext} mx-md: text-gray-500 font-bold group-hover:text-white`}
             onClick={() => navigate("/newsmap")}
             >MAP NEWS</p>
             </div>
@@ -89,13 +94,12 @@ const Menu = ({ setismenuopen }) => {
            </div>
            
             </div>
-            <div className="w-[80vw] h-0.5 bg-gray-100 mx-auto"></div>
+            <div className="w-11/12 h-0.5 bg-gray-100 mx-auto"></div>
             {/* item 1 */}
             <div className="group flex flex-row  justify-between  ">
                 {/* div1  */}
-            <div className="flex flex-row gap-6 transition-transform duration-300 group-hover:translate-x-9 group-hover:scale-104">
-                <p className="flex items-end  justify-center  text-2xl pb-3">4</p>
-            <p className="text-8xl  text-gray-500 font-bold group-hover:text-white"
+            <div className="flex flex-row gap-6 transition-transform duration-300 p-5 group-hover:translate-x-9 group-hover:scale-104">
+            <p className={`${largetext} ${smalltext} mx-md: text-gray-500 font-bold group-hover:text-white`}
             onClick={() => navigate("/pro")}
             >STATIESTICS</p>
             </div>

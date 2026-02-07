@@ -33,12 +33,12 @@ function Nav({ ismenuopen, setismenuopen, setLoggedIn }) {
         className="flex items-center gap-3 cursor-pointer" 
         onClick={() => navigate("/home")}
       >
-        <img 
-          src="https://ik.imagekit.io/dyp7q5hzjq/Pi7_black-and-white-earth-globe-icon-vector-33686338-removebg-preview%20(1).png"
-          width="45"
+        {/* <img 
+         // src="https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png"
+          width="55"
           alt="logo"
-        />
-        <h1 className="text-xl font-semibold">GeoPress</h1>
+        /> */}
+        <h1 className="text-xl font-semibold"><span className="text-blue-400">Geo</span> Press</h1>
       </div>
 
       {/* CENTER TITLE (hidden on mobile) */}

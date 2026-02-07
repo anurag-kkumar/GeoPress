@@ -5,12 +5,12 @@ function Subscribe() {
     <div className="text-white bg-[url('https://cdn.prod.website-files.com/6584ee98993ef2a2ba17f296/65850001dcdc7fa1686a8490_Noise_Black.webp')] w-full h-full">
 
       {/* Subscribe Section */}
-      <div className="group bg-[#E0FF00] w-full min-h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10">
+      <div className="group bg-blue-400 w-full min-h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10">
 
         {/* Left Image */}
         <div className="flex justify-center md:justify-start w-full md:w-1/2 mb-6 md:mb-0">
           <img
-            src="https://ik.imagekit.io/dyp7q5hzjq/black-and-white-earth-globe-icon-vector-33686338-removebg-preview.png"
+            src="https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png"
             alt="Subscribe Illustration"
             className="h-48 sm:h-64 md:h-80 lg:h-[550px] object-contain transition-transform duration-700 ease-in-out group-hover:scale-125"
           />

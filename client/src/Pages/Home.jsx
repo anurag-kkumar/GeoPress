@@ -14,7 +14,36 @@ function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div className="relative bg-[url(https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/ss.jpg)] w-full h-full overflow-hidden max-md:bg-[url(https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/Screenshot%202025-11-25%20190020.png)]">
+    <div className=" bg-black w-full min-h-screen overflow-hidden">
+  
+      {/* home imge  */}
+   <div
+  className="
+    absolute
+    top-28
+    right-0
+    w-[45%]
+    h-full
+    bg-no-repeat
+    bg-contain
+    bg-right
+    opacity-80
+    pointer-events-none
+    z-0
+
+    max-lg:w-[60%]
+    max-md:w-[80%]
+    max-md:top-40
+    max-md:opacity-40
+  "
+  style={{
+    backgroundImage:
+      "url('https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png')",
+  }}
+/>
+
+
+
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav ismenuopen={ismenuopen} setismenuopen={setismenuopen}
          setLoggedIn={setLoggedIn} 
