@@ -34,7 +34,7 @@ const MapNews = () => {
   };
 
   return (
-    <div className=" flex flex-col w-full bg-[url(https://cdn.prod.website-files.com/6584ee98993ef2a2ba17f296/65850001dcdc7fa1686a8490_Noise_Black.webp)] bg-cover bg-center">
+    <div className=" flex flex-col w-full bg-black">
 
       {/* NAVBAR */}
       <div className="fixed top-0 left-0 w-full z-50">
@@ -53,10 +53,19 @@ const MapNews = () => {
       )}
 
       {/* MAIN CONTENT */}
-      <div className="flex h-screen pt-24 px-6 md:px-12 gap-4">
+      <div className="flex max-md:flex-col pt-24 gap-4">
 
-        {/* LEFT SIDE LIST */}
-        <div className="w-[35%] bg-black/30 backdrop-blur-md rounded-xl border border-white/10 overflow-y-scroll shadow-lg">
+
+        
+
+        {/* RIGHT SIDE MAP */}
+       {!ismenuopen && ( 
+  <div className="w-[65%] h-[80vh] mx-auto rounded-xl overflow-hidden shadow-xl border border-white/10">
+    <MapBox selectedLocation={selectedLocation} />
+  </div>)};
+  {/* LEFT SIDE LIST */}
+  {!ismenuopen && ( 
+        <div className="max-md:w-11/12 md:w-[35%] mx-auto bg-black/30 backdrop-blur-md rounded-xl border border-white/10 overflow-y-scroll shadow-lg">
 
           {/* FILTER BUTTONS */}
           <div className="flex gap-3 p-4 flex-wrap">
@@ -72,7 +81,7 @@ const MapNews = () => {
           </div>
 
           {/* NEWS LIST */}
-          <div className="p-4 space-y-4">
+          <div className="flex flex-col  p-4 space-y-4 ">
             {filtered.length === 0 ? (
               <p className="text-gray-300 text-center">No News Selected</p>
             ) : (
@@ -86,7 +95,7 @@ const MapNews = () => {
                       title: item.headline,
                     })
                   }
-                  className="p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow cursor-pointer hover:bg-white/20 transition"
+                  className="p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow cursor-pointer hover:bg-white/20 "
                 >
                   <h3 className="font-bold text-white">{item.headline}</h3>
                   <p className="text-sm text-gray-300">{item.city}</p>
@@ -94,12 +103,8 @@ const MapNews = () => {
               ))
             )}
           </div>
-        </div>
+        </div>)};
 
-        {/* RIGHT SIDE MAP */}
-        <div className="w-[65%]  rounded-xl overflow-hidden shadow-xl border border-white/10">
-          <MapBox selectedLocation={selectedLocation} />
-        </div>
 
       </div>
       <Footer className="pt-10"></Footer>
