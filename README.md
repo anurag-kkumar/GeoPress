@@ -23,7 +23,6 @@ Traditional news platforms present information in text-heavy formats without cle
 * 🗺️ **Interactive Map View** – Incidents displayed as markers on a map
 * 📍 **Click Marker to Read News** – View full news details by selecting a location
 * 🔍 **Category-Based Filtering** – Crime, accidents, events, alerts, etc.
-* 🧑‍💼 **Admin/Reporter Panel** – Add, update, and manage news articles
 * 🔐 **Authentication & Authorization** – Secure login system
 * 📱 **Responsive UI** – Optimized for mobile and desktop devices
 
@@ -57,8 +56,7 @@ Traditional news platforms present information in text-heavy formats without cle
 
 ## 🌱 Future Enhancements
 
-* 🔔 Real-time alerts using WebSockets
-* 🤖 AI-based incident categorization
+* 🔔 Real-time alerts 
 * 📊 Heatmaps for high-risk zones
 * 📍 Location-based personalized news feed
 
