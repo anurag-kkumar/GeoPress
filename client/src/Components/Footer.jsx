@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
-const newsNav=useNavigate();
+  const newsNav = useNavigate();
 
 
   return (
@@ -34,46 +34,46 @@ const newsNav=useNavigate();
       </div>
 
       <ul className="flex gap-6 mt-10">
-  
 
-  <li>
-    <a className="text-3xl text-white hover:-translate-y-2 transition"
-    href="https://x.com/AnuragK71449642"
-    >
-      <FaXTwitter />
-    </a>
-  </li>
 
-  <li>
-    <a className="text-3xl text-white hover:-translate-y-2 transition"
-    href="https://www.linkedin.com/in/anuragkumar23/">
-      <FaLinkedin />
-    </a>
-  </li>
+        <li>
+          <a className="text-3xl text-white hover:-translate-y-2 transition"
+            href="https://x.com/AnuragK71449642"
+          >
+            <FaXTwitter />
+          </a>
+        </li>
 
-  <li>
-    <a className="text-3xl text-white hover:-translate-y-2 transition"
-    href="https://www.instagram.com/anura_g95084/"
-    >
-      <FaInstagram />
-    </a>
-  </li>
-</ul>
+        <li>
+          <a className="text-3xl text-white hover:-translate-y-2 transition"
+            href="https://www.linkedin.com/in/anuragkumar23/">
+            <FaLinkedin />
+          </a>
+        </li>
+
+        <li>
+          <a className="text-3xl text-white hover:-translate-y-2 transition"
+            href="https://www.instagram.com/anura_g95084/"
+          >
+            <FaInstagram />
+          </a>
+        </li>
+      </ul>
 
 
       {/* Menu */}
       <ul className="flex gap-6 mt-6 flex-wrap justify-center">
         <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="#"
-        onClick={()=>{
-          newsNav('/home')
-        }}>Home</a></li>
-        <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="# " onClick={()=>{
+          onClick={() => {
+            newsNav('/home')
+          }}>Home</a></li>
+        <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="# " onClick={() => {
           newsNav('/newsapp')
         }}>news</a></li>
         <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="#"
-        onClick={()=>{
-          newsNav('/newsmap')
-        }}
+          onClick={() => {
+            newsNav('/newsmap')
+          }}
         >Services</a></li>
         <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="https://www.linkedin.com/in/anuragkumar23/">Team</a></li>
         <li><a className="text-white opacity-75 hover:opacity-100 text-lg transition" href="mailto:anuragkr4500@gmail.com">Contact</a></li>
@@ -83,7 +83,7 @@ const newsNav=useNavigate();
         ©2025 Your Website | All Rights Reserved
       </p>
 
-     
+
     </footer>
   );
 }

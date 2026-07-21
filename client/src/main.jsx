@@ -6,11 +6,11 @@ import './index.css'
 import "leaflet/dist/leaflet.css";
 
 import App from './App.jsx'
-import {BrowserRouter} from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from 'react-toastify'
 createRoot(document.getElementById('root')).render(
-   <BrowserRouter>
-  <App></App>
-  <ToastContainer></ToastContainer>
+  <BrowserRouter>
+    <App></App>
+    <ToastContainer></ToastContainer>
   </BrowserRouter>
 )

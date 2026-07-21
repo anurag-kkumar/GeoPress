@@ -29,15 +29,17 @@ const Newsapp = () => {
 
       const news = data.data || [];
 
-    setNewsData(news);
+      setNewsData(news);
 
-    // Save news for MapNews page
-    localStorage.setItem(
-      "newsData",
-      JSON.stringify(news)
+      // Save news for MapNews page
+      localStorage.setItem(
+        "newsData",
+        JSON.stringify(news)
+
+      );
       
-    );
-console.log(newsData);
+      console.log(newsData);
+
     } catch (error) {
       console.log("Fetch Error:", error);
     }
@@ -63,7 +65,7 @@ console.log(newsData);
 
   return (
     <div className="bg-[url(https://cdn.prod.website-files.com/6584ee98993ef2a2ba17f296/65850001dcdc7fa1686a8490_Noise_Black.webp)] w-full min-h-screen">
-      
+
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav
@@ -124,9 +126,9 @@ console.log(newsData);
       {/* News Cards */}
       <div className="px-6 mt-10">
         <Card data={newsData} />
-        
+
       </div>
-     
+
       <Footer />
     </div>
   );

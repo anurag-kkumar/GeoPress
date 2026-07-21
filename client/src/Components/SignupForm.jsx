@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const SignupForm = ({ setLoggedIn }) => {
   const [formData, setFormData] = useState({
@@ -10,9 +11,10 @@ const SignupForm = ({ setLoggedIn }) => {
     email: "",
     password: "",
     confirmpassword: "",
+    gender: "",
+    city: "",
   });
 
-//   const [accountType, setaccountType] = useState("student");
   const [showpassword, setShowPassword] = useState(false);
   const [showcpassword, setShowcPassword] = useState(false);
 
@@ -25,7 +27,7 @@ const SignupForm = ({ setLoggedIn }) => {
     }));
   }
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
 
     if (formData.password !== formData.confirmpassword) {
@@ -33,44 +35,46 @@ const SignupForm = ({ setLoggedIn }) => {
       return;
     }
 
-    setLoggedIn(true);
-    toast.success("Account created!");
-
-    const final = {
-      ...formData,
-    
+    const signupData = {
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      email: formData.email,
+      password: formData.password,
+      gender: formData.gender,
+      city: formData.city,
     };
 
-    console.log(final);
-    navigate("/home");
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        signupData
+      );
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("isLoggedIn", "true");
+
+      setLoggedIn(true);
+
+      toast.success(response.data.message);
+
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+
+      toast.error(
+        error.response?.data?.message || "Signup Failed"
+      );
+    }
   }
 
   return (
     <div className="w-full max-w-md mx-auto mt-10 bg-gray-900 p-6 rounded-xl shadow-lg">
-      {/* Account Type Buttons */}
-      {/* <div className="flex mb-6 bg-gray-100 p-1 rounded-lg">
-        <button
-          onClick={() => setaccountType("student")}
-          className={`w-1/2 py-2 rounded-lg font-medium transition 
-          ${accountType === "student" ? "bg-pink-500 text-white" : "text-gray-600"}`}
-        >
-          Student
-        </button>
-
-        <button
-          onClick={() => setaccountType("instructor")}
-          className={`w-1/2 py-2 rounded-lg font-medium transition 
-          ${accountType === "instructor" ? "bg-pink-500 text-white" : "text-gray-600"}`}
-        >
-          Instructor
-        </button>
-      </div> */}
-
       <form onSubmit={submitHandler} className="space-y-4">
-        {/* First + Last Name */}
+
+        {/* First Name & Last Name */}
         <div className="flex gap-4">
           <label className="w-1/2">
-            <p className="mb-1 font-medium text-gray-700">
+            <p className="mb-1 font-medium text-gray-300">
               First Name <sup className="text-red-500">*</sup>
             </p>
             <input
@@ -80,12 +84,12 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter first name"
               value={formData.firstname}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 focus:outline-[#E0FF00]"
+              className="w-full border rounded-lg px-3 py-2 text-black"
             />
           </label>
 
           <label className="w-1/2">
-            <p className="mb-1 font-medium text-gray-700">
+            <p className="mb-1 font-medium text-gray-300">
               Last Name <sup className="text-red-500">*</sup>
             </p>
             <input
@@ -95,14 +99,14 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter last name"
               value={formData.lastname}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 focus:outline-[#E0FF00]"
+              className="w-full border rounded-lg px-3 py-2 text-black"
             />
           </label>
         </div>
 
         {/* Email */}
         <label className="block">
-          <p className="mb-1 font-medium text-gray-700">
+          <p className="mb-1 font-medium text-gray-300">
             Email <sup className="text-red-500">*</sup>
           </p>
           <input
@@ -112,16 +116,54 @@ const SignupForm = ({ setLoggedIn }) => {
             placeholder="Enter email"
             value={formData.email}
             onChange={changehandler}
-            className="w-full border rounded-lg px-3 py-2 focus:outline-[#E0FF00]"
+            className="w-full border rounded-lg px-3 py-2 text-black"
+          />
+        </label>
+
+        {/* Gender */}
+        <label className="block">
+          <p className="mb-1 font-medium text-gray-300">
+            Gender <sup className="text-red-500">*</sup>
+          </p>
+
+          <select
+            name="gender"
+            required
+            value={formData.gender}
+            onChange={changehandler}
+            className="w-full border rounded-lg px-3 py-2 text-black"
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        {/* City */}
+        <label className="block">
+          <p className="mb-1 font-medium text-gray-300">
+            City <sup className="text-red-500">*</sup>
+          </p>
+
+          <input
+            type="text"
+            name="city"
+            required
+            placeholder="Enter city"
+            value={formData.city}
+            onChange={changehandler}
+            className="w-full border rounded-lg px-3 py-2 text-black"
           />
         </label>
 
         {/* Password */}
         <div className="relative">
           <label className="block">
-            <p className="mb-1 font-medium text-gray-700">
+            <p className="mb-1 font-medium text-gray-300">
               Password <sup className="text-red-500">*</sup>
             </p>
+
             <input
               type={showpassword ? "text" : "password"}
               name="password"
@@ -129,7 +171,7 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter password"
               value={formData.password}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 focus:outline-[#E0FF00]"
+              className="w-full border rounded-lg px-3 py-2 text-black"
             />
           </label>
 
@@ -144,9 +186,10 @@ const SignupForm = ({ setLoggedIn }) => {
         {/* Confirm Password */}
         <div className="relative">
           <label className="block">
-            <p className="mb-1 font-medium text-gray-700">
+            <p className="mb-1 font-medium text-gray-300">
               Confirm Password <sup className="text-red-500">*</sup>
             </p>
+
             <input
               type={showcpassword ? "text" : "password"}
               name="confirmpassword"
@@ -154,7 +197,7 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Re-enter password"
               value={formData.confirmpassword}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 focus:outline-[#E0FF00]"
+              className="w-full border rounded-lg px-3 py-2 text-black"
             />
           </label>
 
@@ -168,7 +211,8 @@ const SignupForm = ({ setLoggedIn }) => {
 
         {/* Submit Button */}
         <button
-          className="w-full mt-4 bg-[#E0FF00] text-black py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+          type="submit"
+          className="w-full mt-4 bg-[#E0FF00] text-black py-2 rounded-lg font-semibold hover:bg-yellow-400 transition"
         >
           Create Account
         </button>

@@ -29,15 +29,11 @@ function Nav({ ismenuopen, setismenuopen, setLoggedIn }) {
     <nav className="text-white flex items-center justify-between px-4 md:px-10 py-4 backdrop-blur-sm w-full fixed top-0 z-50">
 
       {/* LOGO */}
-      <div 
-        className="flex items-center gap-3 cursor-pointer" 
+      <div
+        className="flex items-center gap-3 cursor-pointer"
         onClick={() => navigate("/home")}
       >
-        {/* <img 
-         // src="https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png"
-          width="55"
-          alt="logo"
-        /> */}
+        
         <h1 className="text-xl font-semibold"><span className="text-blue-400">Geo</span> Press</h1>
       </div>
 

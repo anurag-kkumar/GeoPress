@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 function Hero() {
   return (
     <div className="text-white pt-20 pb-24 md:pt-72 md:pb-52">
-      
+
       {/* HERO TEXT */}
       <div className="max-w-250 px-4 m-auto text-center">
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold uppercase leading-tight">
@@ -37,14 +37,14 @@ function Hero() {
 
         {/* Text Block */}
         <div className="text-xl md:text-2xl font-bold flex flex-col gap-1 text-center md:text-left uppercase bg-[#0000004a] max-md:bg-transparent">
-  <span>Certified by</span>
-  <p>Trusted News Sources</p>
-</div>
+          <span>Certified by</span>
+          <p>Trusted News Sources</p>
+        </div>
 
 
         {/* Logos */}
         <div className="flex gap-6 md:gap-10 items-center bg-[#0000004a] max-md:bg-transparent">
-          
+
           {/* Dainik Bhaskar */}
           <div className="flex flex-col items-center">
             <img

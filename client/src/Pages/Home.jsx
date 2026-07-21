@@ -10,15 +10,15 @@ import Subscribe from "../Components/Subscribe";
 import Footer from "../Components/Footer";
 function Home() {
 
-  const[ismenuopen,setismenuopen]=useState(false);
+  const [ismenuopen, setismenuopen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className=" bg-black w-full min-h-screen overflow-hidden">
-  
+
       {/* home imge  */}
-   <div
-  className="
+      <div
+        className="
     absolute
     top-28
     right-0
@@ -36,21 +36,21 @@ function Home() {
     max-md:top-40
     max-md:opacity-40
   "
-  style={{
-    backgroundImage:
-      "url('https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png')",
-  }}
-/>
+        style={{
+          backgroundImage:
+            "url('https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/612c9d68f458c4430acfb576_globe-menu-removebg-preview.png')",
+        }}
+      />
 
 
 
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav ismenuopen={ismenuopen} setismenuopen={setismenuopen}
-         setLoggedIn={setLoggedIn} 
+          setLoggedIn={setLoggedIn}
         />
       </div>
 
-      <div className=""> 
+      <div className="">
         <Hero />
       </div>
 
@@ -67,7 +67,7 @@ function Home() {
       <Subscribe></Subscribe>
       <Footer></Footer>
     </div>
-   
+
   )
 }
 

@@ -9,6 +9,8 @@ const LogginForm = ({ setLoggedIn }) => {
     email: "",
     password: ""
   });
+  
+   console.log(formData);
 
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const LogginForm = ({ setLoggedIn }) => {
   function submitHandler(event) {
     event.preventDefault();
     setLoggedIn(true);
-     localStorage.setItem("isLoggedIn", "true");   // <-- ADD THIS
+    localStorage.setItem("isLoggedIn", "true");
     toast.success("Logged in");
     navigate("/home");
   }
