@@ -84,7 +84,7 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter first name"
               value={formData.firstname}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 text-black"
+              className="w-full border rounded-lg px-3 py-2 text-white"
             />
           </label>
 
@@ -99,7 +99,7 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter last name"
               value={formData.lastname}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 text-black"
+              className="w-full border rounded-lg px-3 py-2 text-white"
             />
           </label>
         </div>
@@ -116,7 +116,7 @@ const SignupForm = ({ setLoggedIn }) => {
             placeholder="Enter email"
             value={formData.email}
             onChange={changehandler}
-            className="w-full border rounded-lg px-3 py-2 text-black"
+            className="w-full border rounded-lg px-3 py-2 text-white"
           />
         </label>
 
@@ -131,7 +131,7 @@ const SignupForm = ({ setLoggedIn }) => {
             required
             value={formData.gender}
             onChange={changehandler}
-            className="w-full border rounded-lg px-3 py-2 text-black"
+            className="w-full border rounded-lg px-3 py-2 text-white"
           >
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
@@ -153,7 +153,7 @@ const SignupForm = ({ setLoggedIn }) => {
             placeholder="Enter city"
             value={formData.city}
             onChange={changehandler}
-            className="w-full border rounded-lg px-3 py-2 text-black"
+            className="w-full border rounded-lg px-3 py-2 text-white"
           />
         </label>
 
@@ -171,13 +171,13 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Enter password"
               value={formData.password}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 text-black"
+              className="w-full border rounded-lg px-3 py-2 text-white"
             />
           </label>
 
           <span
             onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute right-3 bottom-3 cursor-pointer text-xl text-gray-700"
+            className="absolute right-3 bottom-3 cursor-pointer text-xl text-gray-300"
           >
             {showpassword ? <FaRegEye /> : <FaRegEyeSlash />}
           </span>
@@ -197,13 +197,13 @@ const SignupForm = ({ setLoggedIn }) => {
               placeholder="Re-enter password"
               value={formData.confirmpassword}
               onChange={changehandler}
-              className="w-full border rounded-lg px-3 py-2 text-black"
+              className="w-full border rounded-lg px-3 py-2 text-white"
             />
           </label>
 
           <span
             onClick={() => setShowcPassword((prev) => !prev)}
-            className="absolute right-3 bottom-3 cursor-pointer text-xl text-gray-700"
+            className="absolute right-3 bottom-3 cursor-pointer text-xl text-gray-300"
           >
             {showcpassword ? <FaRegEye /> : <FaRegEyeSlash />}
           </span>

@@ -2,8 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "./Menu";
 import LogginForm from "./LogginForm";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 function Nav({ ismenuopen, setismenuopen, setLoggedIn }) {
+  const { user } = useContext(UserContext);
+  
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -18,11 +22,21 @@ function Nav({ ismenuopen, setismenuopen, setLoggedIn }) {
   }, []);
 
   const navigate = useNavigate();
+const isProfilePage = location.pathname === "/pro";
+
+const handleInfo = () => {
+  if (isProfilePage) {
+    navigate("/home");
+  } else {
+    navigate("/pro");
+  }
+};
 
   const handleLogout = () => {
     setLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
-    navigate("/login");
+    localStorage.clear();
+    navigate("/");
   };
 
   return (
@@ -88,28 +102,27 @@ function Nav({ ismenuopen, setismenuopen, setLoggedIn }) {
             <div className="absolute right-0 mt-3 w-48 bg-white text-gray-700 rounded-xl shadow-xl border z-50">
 
               <div className="px-4 py-3 border-b">
-                <p className="font-semibold text-gray-800">Joseph McFall</p>
-                <p className="text-xs text-gray-500">name@flowbite.com</p>
+                <p className="font-semibold capitalize text-gray-800">{user?.firstname}</p>
+                <p className="text-xs text-gray-500">{user?.email}</p>
               </div>
 
               <ul className="p-1 text-sm">
                 <li>
-                  <button className="w-full text-left px-3 py-2 hover:bg-gray-100">
-                    User information
-                  </button>
+                 <button
+  className="w-full text-left px-3 py-2 hover:bg-gray-100"
+  onClick={handleInfo}
+>
+  {isProfilePage ? "Home" : "User Information"}
+</button>
                 </li>
 
                 <li>
-                  <button className="w-full text-left px-3 py-2 hover:bg-gray-100">
-                    Saved locations
+                  <button className="w-full text-left capitalize px-3 py-2 hover:bg-gray-100">
+                    {user?.city}
                   </button>
                 </li>
 
-                <li>
-                  <button className="w-full text-left px-3 py-2 hover:bg-gray-100">
-                    Settings
-                  </button>
-                </li>
+               
 
                 <li>
                   <button

@@ -4,14 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+
 const LogginForm = ({ setLoggedIn }) => {
+
+  const { fetchUser } = useContext(UserContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
-  
-   console.log(formData);
+
+  console.log(formData);
 
   const navigate = useNavigate();
 
@@ -22,32 +28,34 @@ const LogginForm = ({ setLoggedIn }) => {
     }));
   }
 
- async function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
 
     try {
-        const response = await axios.post(
-            "http://localhost:5000/api/auth/login",
-            formData
-        );
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        formData
+      );
 
-        const token = response.data.token;
+      const token = response.data.token;
 
-        localStorage.setItem("token", token);
-        localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("token", token);
+      localStorage.setItem("isLoggedIn", "true");
 
-        setLoggedIn(true);
+      await fetchUser();
 
-        toast.success(response.data.message);
+      setLoggedIn(true);
 
-        navigate("/home");
+      toast.success(response.data.message);
+
+      navigate("/home");
 
     } catch (error) {
-        toast.error(
-            error.response?.data?.message || "Login Failed"
-        );
+      toast.error(
+        error.response?.data?.message || "Login Failed"
+      );
     }
-}
+  }
   return (
     <form
       onSubmit={submitHandler}

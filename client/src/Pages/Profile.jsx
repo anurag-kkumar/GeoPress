@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import Menu from "../Components/Menu";
 
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+
 const Profile = () => {
+const { user } = useContext(UserContext);
+
   const [ismenuopen, setismenuopen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -43,22 +48,24 @@ const Profile = () => {
             {/* Single Item */}
             <div className="flex items-center justify-between border rounded-xl p-4 bg-gray-50 hover:bg-gray-100 transition">
               <span className="text-gray-600 text-sm font-medium">Your Name</span>
-              <p className="font-semibold text-gray-800">xxxx</p>
+             <p className="font-semibold text-gray-800">
+  {user ? `${user.firstname} ${user.lastname}` : "Loading..."}
+</p>
             </div>
 
             <div className="flex items-center justify-between border rounded-xl p-4 bg-gray-50 hover:bg-gray-100 transition">
               <span className="text-gray-600 text-sm font-medium">Email</span>
-              <p className="font-semibold text-gray-800">xxxx</p>
+              <p className="font-semibold text-gray-800">{user?.email}</p>
             </div>
 
             <div className="flex items-center justify-between border rounded-xl p-4 bg-gray-50 hover:bg-gray-100 transition">
               <span className="text-gray-600 text-sm font-medium">Gender</span>
-              <p className="font-semibold text-gray-800">xxxx</p>
+              <p className="font-semibold text-gray-800">{user?.gender}</p>
             </div>
 
             <div className="flex items-center justify-between border rounded-xl p-4 bg-gray-50 hover:bg-gray-100 transition">
               <span className="text-gray-600 text-sm font-medium">City</span>
-              <p className="font-semibold text-gray-800">xxxx</p>
+              <p className="font-semibold text-gray-800">{user?.city}</p>
             </div>
 
           </div>
