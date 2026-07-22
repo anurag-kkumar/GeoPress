@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const LogginForm = ({ setLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,14 +22,32 @@ const LogginForm = ({ setLoggedIn }) => {
     }));
   }
 
-  function submitHandler(event) {
+ async function submitHandler(event) {
     event.preventDefault();
-    setLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "true");
-    toast.success("Logged in");
-    navigate("/home");
-  }
 
+    try {
+        const response = await axios.post(
+            "http://localhost:5000/api/auth/login",
+            formData
+        );
+
+        const token = response.data.token;
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("isLoggedIn", "true");
+
+        setLoggedIn(true);
+
+        toast.success(response.data.message);
+
+        navigate("/home");
+
+    } catch (error) {
+        toast.error(
+            error.response?.data?.message || "Login Failed"
+        );
+    }
+}
   return (
     <form
       onSubmit={submitHandler}
