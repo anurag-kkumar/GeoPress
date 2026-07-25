@@ -11,7 +11,8 @@ import PrivateRoute from './Components/PrivateRoute'
 import Newsapp from './Pages/Newsapp'
 import MapNews from './Pages/MapNews'
 import Profile from './Pages/Profile'
-import Aboutus from './Components/Aboutus'
+import Aboutus from './Components/HomePage/Aboutus'
+import NotFound from './Pages/NotFound'
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(
@@ -45,7 +46,7 @@ function App() {
           <PrivateRoute isLoggedIn={isLoggedIn} ><Home /></PrivateRoute>
         }>
         </Route>
-
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
     </div>

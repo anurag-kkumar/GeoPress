@@ -1,4 +1,4 @@
-import Templet from "../Components/Templet";
+import Templet from "../Components/HomePage/Templet";
 // import loginImg from "../assets/logimg.jpg"
 const Signup = ({ setLoggedIn }) => {
 

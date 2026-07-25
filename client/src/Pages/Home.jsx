@@ -1,13 +1,13 @@
 import Nav from "../Components/Nav";
-import Hero from "../Components/Hero";
+import Hero from "../Components/HomePage/Hero";
 import { useState } from "react";
 import Menu from "../Components/Menu";
-import Aboutus from "../Components/Aboutus";
-import Catogories from "../Components/Catogories";
-import Feature from "../Components/Feature";
-import CaseStudy from "../Components/CaseStudy";
-import Subscribe from "../Components/Subscribe";
-import Footer from "../Components/Footer";
+import Aboutus from "../Components/HomePage/Aboutus";
+import Catogories from "../Components/HomePage/Catogories";
+import Feature from "../Components/HomePage/Feature";
+import CaseStudy from "../Components/HomePage/CaseStudy";
+import Subscribe from "../Components/HomePage/Subscribe";
+import Footer from "../Components/HomePage/Footer";
 function Home() {
 
   const [ismenuopen, setismenuopen] = useState(false);

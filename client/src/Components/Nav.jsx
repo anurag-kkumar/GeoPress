@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Menu from "./Menu";
-import LogginForm from "./LogginForm";
+import LogginForm from "./forms/LogginForm";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";

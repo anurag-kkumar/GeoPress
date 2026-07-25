@@ -1,26 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const MapBox = ({ selectedLocation }) => {
+  const mapRef = useRef(null);
+  const markerRef = useRef(null);
+
+  // Create map only once
   useEffect(() => {
-    const map = L.map("mymap").setView([27.5, 77.6], 8);
+    mapRef.current = L.map("mymap").setView([27.5, 77.6], 5);
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(mapRef.current);
 
-    // Update marker whenever selectedLocation changes
-    if (selectedLocation) {
-      L.marker([selectedLocation.lat, selectedLocation.lng])
-        .addTo(map)
-        .bindPopup(selectedLocation.title)
-        .openPopup();
+    return () => {
+      mapRef.current.remove();
+    };
+  }, []);
 
-      map.setView([selectedLocation.lat, selectedLocation.lng], 13);
+  // Update marker when location changes
+  useEffect(() => {
+    if (!selectedLocation || !mapRef.current) return;
+
+    // Remove previous marker
+    if (markerRef.current) {
+      mapRef.current.removeLayer(markerRef.current);
     }
 
-    return () => map.remove();
+    // Add new marker
+    markerRef.current = L.marker([
+      selectedLocation.lat,
+      selectedLocation.lng,
+    ])
+      .addTo(mapRef.current)
+      .bindPopup(selectedLocation.title)
+      .openPopup();
+
+    // Move map
+    mapRef.current.flyTo(
+      [selectedLocation.lat, selectedLocation.lng],
+      13,
+      {
+        duration: 1.5,
+      }
+    );
   }, [selectedLocation]);
 
-  return <div id="mymap" className="h-full w-full"></div>;
+  return <div id="mymap" className="w-full h-full"></div>;
 };
 
 export default MapBox;

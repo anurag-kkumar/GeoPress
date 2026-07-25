@@ -1,6 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Card = ({ data }) => {
+  const navigate = useNavigate();
+
+  const handleViewOnMap = (index) => {
+    navigate("/newsmap", {
+      state: {
+        index,
+      },
+    });
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {data?.map((news, index) => (
@@ -26,19 +38,29 @@ const Card = ({ data }) => {
               {news.description?.slice(0, 120)}...
             </p>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-4">
               <span className="text-xs text-gray-500">
                 {news.source}
               </span>
 
-              <a
-                href={news.url}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-blue-600 text-white px-3 py-1 rounded"
-              >
-                Read More
-              </a>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleViewOnMap(index)}
+                  className="bg-green-600 text-white px-3 py-1 rounded flex items-center gap-2 hover:bg-green-700"
+                >
+                  <FaMapMarkerAlt />
+                  Map
+                </button>
+
+                <a
+                  href={news.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-blue-600 text-white px-3 py-1 rounded"
+                >
+                  Read More
+                </a>
+              </div>
             </div>
           </div>
         </div>

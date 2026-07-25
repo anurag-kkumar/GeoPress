@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 const LogginForm = ({ setLoggedIn }) => {
 

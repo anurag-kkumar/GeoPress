@@ -1,4 +1,4 @@
-import Templet from "../Components/Templet";
+import Templet from "../Components/HomePage/Templet";
 const Login = ({ setLoggedIn }) => {
     //  {/* title,desc1,decs2,image,formtypes,setLoggedIn */}
     return (

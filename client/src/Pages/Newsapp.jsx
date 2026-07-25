@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import Nav from "../Components/Nav";
 import Menu from "../Components/Menu";
-import Footer from "../Components/Footer";
-import MapNews from "./MapNews";
+import Footer from "../Components/HomePage/Footer";
+import { useNews } from "../context/NewsContext";
 
 const Newsapp = () => {
   const [ismenuopen, setismenuopen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [search, setSearch] = useState("");
-  const [newsData, setNewsData] = useState([]);
+
+  const { newsData, setNewsData } = useNews();
 
   const API_KEY = import.meta.env.VITE_MEDIASTACK_API_KEY;
 
@@ -25,20 +26,9 @@ const Newsapp = () => {
       const response = await fetch(url);
       const data = await response.json();
 
-      console.log(data);
-
       const news = data.data || [];
 
       setNewsData(news);
-
-      // Save news for MapNews page
-      localStorage.setItem(
-        "newsData",
-        JSON.stringify(news)
-
-      );
-      
-      console.log(newsData);
 
     } catch (error) {
       console.log("Fetch Error:", error);
@@ -46,7 +36,9 @@ const Newsapp = () => {
   };
 
   useEffect(() => {
-    getData();
+    if (newsData.length === 0) {
+      getData();
+    }
   }, []);
 
   const handleInput = (e) => {
@@ -85,7 +77,6 @@ const Newsapp = () => {
       {/* Search Section */}
       <div className="w-full flex flex-col items-center pt-28">
 
-        {/* Search Bar */}
         <div className="flex items-center gap-2 w-[320px] sm:w-[450px] bg-white shadow-md rounded-full px-3 py-2">
           <input
             type="text"
@@ -108,7 +99,6 @@ const Newsapp = () => {
           </button>
         </div>
 
-        {/* Categories */}
         <div className="flex flex-wrap justify-center gap-3 mt-6">
           {["Delhi", "Mumbai", "Noida", "Pune", "Jaipur"].map((item) => (
             <button
@@ -126,7 +116,6 @@ const Newsapp = () => {
       {/* News Cards */}
       <div className="px-6 mt-10">
         <Card data={newsData} />
-
       </div>
 
       <Footer />

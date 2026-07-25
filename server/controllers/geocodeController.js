@@ -1,7 +1,18 @@
+const locationCache = {};
+
 const getCoordinates = async (req, res) => {
   try {
     const { place } = req.query;
 
+    const key = place.trim().toLowerCase();
+
+    // Check cache
+    if (locationCache[key]) {
+      console.log("✅ From Cache:", place);
+      return res.json(locationCache[key]);
+    }
+
+    // Fetch from OpenStreetMap
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
         place
@@ -14,7 +25,6 @@ const getCoordinates = async (req, res) => {
     );
 
     const data = await response.json();
-    console.log(data);
 
     if (!data.length) {
       return res.status(404).json({
@@ -22,12 +32,19 @@ const getCoordinates = async (req, res) => {
       });
     }
 
-    res.json({
+    const coordinates = {
       lat: Number(data[0].lat),
       lng: Number(data[0].lon),
-    });
+    };
+
+    // Save to cache
+    locationCache[key] = coordinates;
+
+    console.log("💾 Saved:", place);
+
+    res.json(coordinates);
   } catch (error) {
-    console.log(error);
+    console.error(error);
 
     res.status(500).json({
       message: "Server Error",

@@ -1,7 +1,7 @@
 // import Signup from "../Pages/Signup";
 import "./Templet.css";
-import LogginForm from "./LogginForm";
-import SignupForm from "./SignupForm";
+import LogginForm from "../forms/LogginForm";
+import SignupForm from "../forms/SignupForm";
 
 const posters = [
   "https://ik.imagekit.io/dyp7q5hzjq/New%20Folder/Screenshot%202025-11-15%20161109.png?updatedAt=1763205239512",

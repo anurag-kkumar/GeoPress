@@ -8,10 +8,15 @@ import "leaflet/dist/leaflet.css";
 import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from 'react-toastify'
+import { NewsProvider } from './context/NewsContext.jsx';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
+ 
    <UserProvider>
-     <App />
+     <NewsProvider>
+      <App />
+     </NewsProvider>
+     
    </UserProvider>
 
      
