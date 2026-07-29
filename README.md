@@ -2,6 +2,11 @@
 
 GeoPress is a **location-based news web application** that visualizes local news and incidents directly on a map. It helps users quickly understand **what happened, where it happened, and what is happening nearby**, all in one place.
 
+## 🌐 Live Demo
+
+- **Frontend:** [https://your-frontend-url.vercel.app](https://geo-press.vercel.app/)
+- **Backend API:** [https://your-backend-url.onrender.com](https://geopress-api.onrender.com)
+
 ---
 
 ## ❓ Problem It Solves
@@ -56,7 +61,7 @@ Traditional news platforms present information in text-heavy formats without cle
 
 ## 🌱 Future Enhancements
 
-* 🔔 Real-time alerts 
+* 🔔 Real-time alerts
 * 📊 Heatmaps for high-risk zones
 * 📍 Location-based personalized news feed
 
