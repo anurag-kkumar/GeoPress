@@ -90,11 +90,14 @@ const handleInfo = () => {
         {/* PROFILE DROPDOWN */}
         <div className="relative" ref={dropdownRef}>
           <button onClick={() => setOpen(!open)}>
-            <img
-              src="https://i.pravatar.cc/40"
-              alt="user"
-              className="w-9 h-9 rounded-full"
-            />
+           <img
+  src={
+    user?.profileImage ||
+    "https://i.pravatar.cc/40"
+  }
+  alt="user"
+  className="w-9 h-9 rounded-full object-cover"
+/>
           </button>
 
           {/* Dropdown Menu */}

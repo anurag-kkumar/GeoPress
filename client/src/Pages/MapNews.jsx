@@ -36,7 +36,7 @@ const MapNews = () => {
   const getCoordinates = async (place) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/geocode?place=${encodeURIComponent(place)}`
+       `${import.meta.env.VITE_API_URL}/api/geocode?place=${encodeURIComponent(place)}`
       );
 
       const data = await response.json();

@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
       if (!token) return;
 
       const response = await axios.get(
-        "http://localhost:5000/api/auth/profile",
+        `${import.meta.env.VITE_API_URL}/api/auth/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

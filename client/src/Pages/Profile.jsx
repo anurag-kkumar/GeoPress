@@ -34,11 +34,14 @@ console.log("User:", user);
         <div className="bg-white rounded-xl shadow p-6">
           {/* Profile Photo */}
           <div className="flex flex-col items-center mb-6">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/921/921071.png"
-              alt="profile"
-              className="w-28 h-28 rounded-full"
-            />
+           <img
+  src={
+    user?.profileImage ||
+    "https://cdn-icons-png.flaticon.com/512/921/921071.png"
+  }
+  alt="profile"
+  className="w-28 h-28 rounded-full object-cover"
+/>
 
           </div>
 

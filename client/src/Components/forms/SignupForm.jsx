@@ -6,6 +6,7 @@ import axios from "axios";
 import { UserContext } from "../../context/UserContext";
 
 const SignupForm = ({ setLoggedIn }) => {
+  const [image, setImage] = useState(null);
   const { fetchUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
     firstname: "",
@@ -37,21 +38,29 @@ const SignupForm = ({ setLoggedIn }) => {
       return;
     }
 
-    const signupData = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      email: formData.email,
-      password: formData.password,
-      gender: formData.gender,
-      city: formData.city,
-    };
+   const signupData = new FormData();
+
+signupData.append("firstname", formData.firstname);
+signupData.append("lastname", formData.lastname);
+signupData.append("email", formData.email);
+signupData.append("password", formData.password);
+signupData.append("gender", formData.gender);
+signupData.append("city", formData.city);
+
+if(image){
+  signupData.append("profileImage", image);
+}
 
     try {
-     const response = await axios.post(
-  "http://localhost:5000/api/auth/signup",
-  signupData
+   const response = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/auth/signup`,
+  signupData,
+  {
+    headers:{
+      "Content-Type":"multipart/form-data"
+    }
+  }
 );
-
 localStorage.setItem("token", response.data.token);
 localStorage.setItem("isLoggedIn", "true");
 
@@ -160,7 +169,19 @@ navigate("/home");
             className="w-full border rounded-lg px-3 py-2 text-white"
           />
         </label>
+{/* Profile Image */}
+<label className="block">
+  <p className="mb-1 font-medium text-gray-300">
+    Profile Image
+  </p>
 
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => setImage(e.target.files[0])}
+    className="w-full text-white"
+  />
+</label>
         {/* Password */}
         <div className="relative">
           <label className="block">

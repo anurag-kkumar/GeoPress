@@ -1,19 +1,39 @@
+const cloudinary = require("../config/cloudinary");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-//  SIGNUP
 exports.signup = async (req, res) => {
   try {
+
     const { firstname, lastname, email, password, gender, city } = req.body;
+
 
     // Check existing user
     const userExists = await User.findOne({ email });
-    if (userExists)
+
+    if (userExists) {
       return res.status(400).json({
-     message: "User already exists" });
+        message: "User already exists"
+      });
+    }
+
+
+    // Upload image to Cloudinary
+    let imageUrl = "";
+
+    if (req.file) {
+
+      const result = await cloudinary.uploader.upload(
+        `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`
+      );
+
+      imageUrl = result.secure_url;
+    }
+
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
 
     // Create user
     const user = await User.create({
@@ -23,7 +43,9 @@ exports.signup = async (req, res) => {
       password: hashedPassword,
       gender,
       city,
+      profileImage: imageUrl
     });
+
 
     const token = jwt.sign(
       { id: user._id },
@@ -31,13 +53,21 @@ exports.signup = async (req, res) => {
       { expiresIn: "7d" }
     );
 
+
     res.status(201).json({
       message: "Signup Successful",
       token,
     });
 
+
   } catch (error) {
-    res.status(500).json({ message: "Signup Failed" });
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Signup Failed"
+    });
+
   }
 };
 
