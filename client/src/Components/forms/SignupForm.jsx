@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 
 const SignupForm = ({ setLoggedIn }) => {
+  const { fetchUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -45,19 +47,21 @@ const SignupForm = ({ setLoggedIn }) => {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        signupData
-      );
+     const response = await axios.post(
+  "http://localhost:5000/api/auth/signup",
+  signupData
+);
 
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("isLoggedIn", "true");
+localStorage.setItem("token", response.data.token);
+localStorage.setItem("isLoggedIn", "true");
 
-      setLoggedIn(true);
+await fetchUser();   // <-- Load the user into UserContext
 
-      toast.success(response.data.message);
+setLoggedIn(true);
 
-      navigate("/home");
+toast.success(response.data.message);
+
+navigate("/home");
     } catch (error) {
       console.log(error);
 

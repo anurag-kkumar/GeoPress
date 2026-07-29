@@ -7,7 +7,7 @@ import { UserContext } from "../context/UserContext";
 
 const Profile = () => {
 const { user } = useContext(UserContext);
-
+console.log("User:", user);
   const [ismenuopen, setismenuopen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
