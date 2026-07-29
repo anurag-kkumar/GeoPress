@@ -118,3 +118,50 @@ exports.getProfile = async (req, res) => {
     res.status(500).json({ message: "Failed to load profile" });
   }
 };
+
+// for fogot password 
+exports.forgotPassword = async (req, res) => {
+  try {
+
+    const { email, newPassword } = req.body;
+
+
+    // find user
+    const user = await User.findOne({ email });
+
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+
+    // hash new password
+    const hashedPassword = await bcrypt.hash(
+      newPassword,
+      10
+    );
+
+
+    // update password
+    user.password = hashedPassword;
+
+    await user.save();
+
+
+    res.json({
+      message: "Password reset successful"
+    });
+
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Password reset failed"
+    });
+
+  }
+};

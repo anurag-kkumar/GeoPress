@@ -91,10 +91,17 @@ const handleInfo = () => {
         <div className="relative" ref={dropdownRef}>
           <button onClick={() => setOpen(!open)}>
            <img
-  src={
+ src={
     user?.profileImage ||
-    "https://i.pravatar.cc/40"
+    (
+      user?.gender === "Male"
+        ? "https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202026-07-29%20143510.png"
+        : user?.gender === "Female"
+        ? "https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202026-07-29%20143529.png"
+        : "https://i.pravatar.cc/40"
+    )
   }
+
   alt="user"
   className="w-9 h-9 rounded-full object-cover"
 />

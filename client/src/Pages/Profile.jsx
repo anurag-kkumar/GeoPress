@@ -35,9 +35,15 @@ console.log("User:", user);
           {/* Profile Photo */}
           <div className="flex flex-col items-center mb-6">
            <img
-  src={
+ src={
     user?.profileImage ||
-    "https://cdn-icons-png.flaticon.com/512/921/921071.png"
+    (
+      user?.gender === "Male"
+        ? "https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202026-07-29%20143510.png"
+        : user?.gender === "Female"
+        ? "https://ik.imagekit.io/dyp7q5hzjq/Screenshot%202026-07-29%20143529.png"
+        : "https://i.pravatar.cc/40"
+    )
   }
   alt="profile"
   className="w-28 h-28 rounded-full object-cover"
@@ -76,9 +82,9 @@ console.log("User:", user);
         </div>
 
         {/* Right Card */}
-        <div className="bg-white rounded-xl shadow p-6">
+        <div className="bg-white rounded-xl shadow p-3">
           <h2 className="font-semibold text-gray-400 mb-4 flex items-center gap-2 uppercase">
-            Nearby Crime Alerts (≤ 20 km)
+            <img src="https://instagram.fagr1-1.fna.fbcdn.net/v/t51.82787-15/528039462_18015509939751439_2713195068718439683_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzY5MzE4NzU3NTA3NDU1NzI4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=sDh8aE3t4IMQ7kNvwFY-XHG&_nc_oc=AdrW2PyqE-hcChOSa77qVzM58B_vhidlMONI2N3aDgC-t7an482Gz71q5VaE9G9h7aTfMltMGXKt2STEeosbSALG&_nc_zt=23&_nc_ht=instagram.fagr1-1.fna&_nc_gid=ShRyKShGxR5NZUbclGiz3w&_nc_ss=7b689&oh=00_AQCHkz41j37PLrGaeTPrX6GWU0pHmINuqaVMl1n2O-QVKg&oe=6A6FA54E" alt="" />
           </h2>
 
 

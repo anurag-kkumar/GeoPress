@@ -13,6 +13,7 @@ import MapNews from './Pages/MapNews'
 import Profile from './Pages/Profile'
 import Aboutus from './Components/HomePage/Aboutus'
 import NotFound from './Pages/NotFound'
+import ForgotPassword from './Pages/ForgotPassword'
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(
@@ -47,6 +48,7 @@ function App() {
         }>
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
+       
       </Routes>
 
     </div>
